@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1585" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/drawable/ic_navigation.xml" value="0.1585" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/drawable/ic_search.xml" value="0.1585" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/layout/activity_search.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/layout/fragment_navigationfragment.xml" value="0.13994565217391305" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/menu/actionbar.xml" value="0.2484375" />
+        <entry key="..\:/Users/rathi/AndroidStudioProjects/Walkzz/app/src/main/res/menu/menu.xml" value="0.2484375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
