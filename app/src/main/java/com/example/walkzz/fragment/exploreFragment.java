@@ -1,4 +1,4 @@
-package com.example.walkzz;
+package com.example.walkzz.fragment;
 
 import android.os.Bundle;
 
@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.walkzz.R;
+import com.example.walkzz.imageCardView;
+import com.example.walkzz.Adapter.recyclerAdapterExplore;
 
 import java.util.ArrayList;
 
@@ -37,7 +41,7 @@ public class exploreFragment extends Fragment {
             System.out.println(imageCardView0ArrayList.add(new imageCardView("Flower", R.drawable.rose)));
         }
 
-        recyclerAdapter recyclerAdapter = new recyclerAdapter(requireContext(), imageCardView0ArrayList);
+        recyclerAdapterExplore recyclerAdapter = new recyclerAdapterExplore(requireContext(), imageCardView0ArrayList);
        GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false);
 
 
