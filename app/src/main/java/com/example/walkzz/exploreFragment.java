@@ -32,13 +32,14 @@ public class exploreFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
         ArrayList<imageCardView> imageCardView0ArrayList = new ArrayList<imageCardView>();
-
+        recyclerView.setHasFixedSize(true);
         for (int i = 0; i < 100; i++) {
             System.out.println(imageCardView0ArrayList.add(new imageCardView("Flower", R.drawable.rose)));
         }
 
         recyclerAdapter recyclerAdapter = new recyclerAdapter(requireContext(), imageCardView0ArrayList);
        GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false);
+
 
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
@@ -51,5 +52,9 @@ public class exploreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explore, container, false);
+    }
+
+    public void onItemClick(int position){
+
     }
 }

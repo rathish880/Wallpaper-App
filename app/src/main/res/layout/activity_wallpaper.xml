@@ -11,6 +11,13 @@
         android:id="@+id/ivImage1"
         android:scaleType="centerCrop"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtName"
+        android:layout_below="@+id/ivImage1"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,12 +30,8 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:backgroundTint="#A6000000" />
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pbLoading"
-        android:layout_centerInParent="true"
-        tools:ignore="InvalidId" />
+        app:backgroundTint="#A6000000"
+     />
+
 
 </RelativeLayout>
