@@ -38,9 +38,18 @@ public class categoriesFragment extends Fragment {
 
         ArrayList<imageCardView> imageCardView0ArrayList1 = new ArrayList<imageCardView>();
 
-        for (int i = 0; i < 100; i++) {
-            System.out.println(imageCardView0ArrayList1.add(new imageCardView("Flower", R.drawable.rose)));
-        }
+       // for (int i = 0; i < 100; i++) {
+         //   System.out.println(imageCardView0ArrayList1.add(new imageCardView("Flower", R.drawable.rose)));
+        //}
+
+        imageCardView0ArrayList1.add(new imageCardView("FLOWERS", R.drawable.rose));
+        imageCardView0ArrayList1.add(new imageCardView("NATURE", R.drawable.nature));
+        imageCardView0ArrayList1.add(new imageCardView("AESTHETIC", R.drawable.aesthetic));
+        imageCardView0ArrayList1.add(new imageCardView("MOVIES", R.drawable.movies));
+        imageCardView0ArrayList1.add(new imageCardView("ANIME", R.drawable.anime));
+        imageCardView0ArrayList1.add(new imageCardView("BLACK", R.drawable.black));
+        imageCardView0ArrayList1.add(new imageCardView("SPECIES", R.drawable.species));
+
 
         recyclerAdapterCategories recyclerAdapter = new recyclerAdapterCategories(requireContext(), imageCardView0ArrayList1);
         //GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 1, LinearLayoutManager.VERTICAL, false);
