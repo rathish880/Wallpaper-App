@@ -51,6 +51,8 @@ public class categoriesFragment extends Fragment {
         imageCardView0ArrayList1.add(new imageCardView("SPECIES", R.drawable.species));
 
 
+
+
         recyclerAdapterCategories recyclerAdapter = new recyclerAdapterCategories(requireContext(), imageCardView0ArrayList1);
         //GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 1, LinearLayoutManager.VERTICAL, false);
 

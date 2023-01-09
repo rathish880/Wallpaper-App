@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ivImage"
                 android:layout_centerHorizontal="true"
+                android:textStyle="bold"
                 />
        </RelativeLayout>
 

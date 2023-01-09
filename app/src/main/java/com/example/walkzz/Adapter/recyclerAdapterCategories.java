@@ -2,6 +2,7 @@ package com.example.walkzz.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.walkzz.R;
+import com.example.walkzz.flowerActivity;
 import com.example.walkzz.imageCardView;
 
 import java.util.ArrayList;
@@ -42,10 +44,17 @@ public class recyclerAdapterCategories extends RecyclerView.Adapter<recyclerAdap
     public void onBindViewHolder(@NonNull recyclerAdapterCategories.Viewholder holder, @SuppressLint("RecyclerView") int position) {
         imageCardView model = imageCardViewArrayList1.get(position);
         holder.imgName2.setText(model.getImgName());
-        holder.img2.setImageResource(model.getImg());
+       // holder.img2.setImageResource(model.getImg());
 
        holder.img2.setImageDrawable(context.getResources().getDrawable(model.getImg()));
+       // holder.relativeLayout1.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+           // public void onClick(View v) {
+               // Intent intent=new Intent(context, flowerActivity.class);
+               // context.startActivity(intent);
 
+            //}
+        //});
 
 
 

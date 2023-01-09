@@ -37,9 +37,10 @@ public class exploreFragment extends Fragment {
 
         ArrayList<imageCardView> imageCardView0ArrayList = new ArrayList<imageCardView>();
         recyclerView.setHasFixedSize(true);
-        for (int i = 0; i < 100; i++) {
-            System.out.println(imageCardView0ArrayList.add(new imageCardView("Flower", R.drawable.rose)));
-        }
+
+        imageCardView0ArrayList.add(new imageCardView("Flower", R.drawable.rose));
+        imageCardView0ArrayList.add(new imageCardView("Species", R.drawable.species));
+
 
         recyclerAdapterExplore recyclerAdapter = new recyclerAdapterExplore(requireContext(), imageCardView0ArrayList);
        GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false);
@@ -62,3 +63,6 @@ public class exploreFragment extends Fragment {
 
     }
 }
+
+
+
