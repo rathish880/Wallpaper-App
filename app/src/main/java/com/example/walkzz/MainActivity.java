@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity  {
                 switch (item.getItemId()) {
 
 
-                    case R.id.favorites:
-                        Toast.makeText(MainActivity.this, "favorites option has been clicked", Toast.LENGTH_SHORT).show();
+                    case R.id.download:
+                        Toast.makeText(MainActivity.this, "Download option has been clicked", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, favorites.class));
 
 
@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
                         return true;
-                    case R.id.settings:
 
-                        return true;
 
                     default:
                         // If we got here, the user's action was not recognized.

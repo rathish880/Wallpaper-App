@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.walkzz.fragment.allFragment;
+import com.example.walkzz.fragment.favoritesFragment;
 import com.example.walkzz.fragment.categoriesFragment;
 import com.example.walkzz.fragment.exploreFragment;
 
@@ -21,9 +21,9 @@ public class viewPagerAdapter extends FragmentStateAdapter {
         switch (position){
 
             case 1:
-                return new allFragment();
-            case 2:
                 return new categoriesFragment();
+            case 2:
+                return new favoritesFragment();
             case 3:
             default:
                 return new exploreFragment();

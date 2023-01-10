@@ -47,14 +47,14 @@ public class recyclerAdapterCategories extends RecyclerView.Adapter<recyclerAdap
        // holder.img2.setImageResource(model.getImg());
 
        holder.img2.setImageDrawable(context.getResources().getDrawable(model.getImg()));
-       // holder.relativeLayout1.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-           // public void onClick(View v) {
-               // Intent intent=new Intent(context, flowerActivity.class);
-               // context.startActivity(intent);
+        holder.relativeLayout2.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, flowerActivity.class);
+                context.startActivity(intent);
 
-            //}
-        //});
+            }
+        });
 
 
 
@@ -71,13 +71,13 @@ public class recyclerAdapterCategories extends RecyclerView.Adapter<recyclerAdap
     public static class Viewholder extends RecyclerView.ViewHolder {
         private final ImageView img2;
         private final TextView imgName2;
-        RelativeLayout relativeLayout1;
+        RelativeLayout relativeLayout2;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             img2= (ImageView) itemView.findViewById(R.id.ivImage1);
             imgName2= (TextView) itemView.findViewById(R.id.txtName1);
-            relativeLayout1= (RelativeLayout) itemView.findViewById(R.id.item1);
+            relativeLayout2= (RelativeLayout) itemView.findViewById(R.id.item1);
         }
     }
 }
