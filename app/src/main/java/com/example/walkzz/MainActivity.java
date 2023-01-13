@@ -2,7 +2,6 @@ package com.example.walkzz;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -14,6 +13,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity  {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView nagivationView;
+    GoogleSignInClient gClient;
+    GoogleSignInOptions gOptions;
 
 
 
@@ -109,6 +114,15 @@ public class MainActivity extends AppCompatActivity  {
                 tabLayout.getTabAt(position).select();
             }
         });
+
+
+
+        //google sign in
+
+        gOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gClient= GoogleSignIn.getClient(this,gOptions);
+
+        GoogleSignInAccount gAccount=GoogleSignIn.getLastSignedInAccount(this);
 
 
     }

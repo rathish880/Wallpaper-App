@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977376619365",
+    "project_id": "walkzz-5edff",
+    "storage_bucket": "walkzz-5edff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977376619365:android:74644784bd513b63c54f8c",
+        "android_client_info": {
+          "package_name": "com.example.walkzz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977376619365-tn112q467cv03ibt2h3sfvd7rij8m5ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_4CxMu9HzP4nG8Nld7WRqpFU_KwbO7P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977376619365-tn112q467cv03ibt2h3sfvd7rij8m5ek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
