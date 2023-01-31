@@ -5,9 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.favoritesFragment"
+    android:id="@+id/relative1"
     >
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView2"
+        />
+    <include
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/lyt_not_found"
+        layout="@layout/include_no_favorite"
 
-    <!-- TODO: Update blank fragment layout -->
+        />
+
+
 
 
 

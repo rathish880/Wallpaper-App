@@ -1,5 +1,4 @@
 package com.example.walkzz;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity  {
     private viewPagerAdapter viewPagerAdapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private NavigationView nagivationView;
+    public NavigationView nagivationView;
     GoogleSignInClient gClient;
     GoogleSignInOptions gOptions;
+
 
 
 
@@ -45,13 +46,37 @@ public class MainActivity extends AppCompatActivity  {
         viewPagerAdapter = new viewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawarLayout);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+        ActionBarDrawerToggle actionBarDrawerToggle  = new ActionBarDrawerToggle(this, drawerLayout,toolbar, R.string.nav_open, R.string.nav_close);
         nagivationView= findViewById(R.id.navigation);
 
 
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        nagivationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_account:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                        break;
+                    case R.id.nav_settings:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+                        break;
+
+                    case R.id.nav_logOut:
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+
+                return true;
+            }
+        });
 
 
         toolbar.setOnMenuItemClickListener(new androidx.appcompat.widget.Toolbar.OnMenuItemClickListener() {
@@ -82,14 +107,25 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         });
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Navigation Icon clicked", Toast.LENGTH_SHORT).show();
-                if(!drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.openDrawer(GravityCompat.START);
-                else drawerLayout.closeDrawer(GravityCompat.END);
+                if(!drawerLayout.isDrawerOpen(GravityCompat.START))
+                    drawerLayout.openDrawer(GravityCompat.START);
+                else
+                    drawerLayout.closeDrawer(GravityCompat.END);
             }
+
+
+
+
+
         });
+
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -129,11 +165,12 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+       if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }
