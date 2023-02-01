@@ -14,11 +14,16 @@
         android:id="@+id/nav_settings"
         android:icon="@drawable/ic_settings"
         android:title="Settings" />
+      <item
+          android:id="@+id/upload"
+          android:icon="@drawable/ic_upload"
+          android:title="Upload"
+          />
 
   </group>
 
   <item
-      android:title="logout feature">
+      android:title="">
     <menu>
       <item
           android:id="@+id/nav_logOut"

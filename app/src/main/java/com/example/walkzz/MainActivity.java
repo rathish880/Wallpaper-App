@@ -1,6 +1,12 @@
 package com.example.walkzz;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -8,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,17 +28,16 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private viewPagerAdapter viewPagerAdapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    public NavigationView nagivationView;
+    public NavigationView navigationView;
     GoogleSignInClient gClient;
     GoogleSignInOptions gOptions;
-
-
+    private String TAG = "MainActivity";
 
 
     @Override
@@ -46,37 +52,39 @@ public class MainActivity extends AppCompatActivity  {
         viewPagerAdapter = new viewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawarLayout);
-        ActionBarDrawerToggle actionBarDrawerToggle  = new ActionBarDrawerToggle(this, drawerLayout,toolbar, R.string.nav_open, R.string.nav_close);
-        nagivationView= findViewById(R.id.navigation);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close);
+        navigationView = findViewById(R.id.navigation);
+        navigationView.setNavigationItemSelectedListener(this);
 
+        setSupportActionBar(toolbar);
 
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-        nagivationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_account:
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                        break;
-                    case R.id.nav_settings:
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-                        break;
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                //Log.i(TAG, "onDrawerSlide");
+            }
 
-                    case R.id.nav_logOut:
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        Toast.makeText(MainActivity.this,"Logout!", Toast.LENGTH_SHORT).show();
-                        break;
-                }
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                Log.i(TAG, "onDrawerOpened");
+            }
 
-                return true;
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                Log.i(TAG, "onDrawerClosed");
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                //Log.i(TAG, "onDrawerStateChanged");
             }
         });
+
+
 
 
         toolbar.setOnMenuItemClickListener(new androidx.appcompat.widget.Toolbar.OnMenuItemClickListener() {
@@ -108,22 +116,23 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Navigation Icon clicked", Toast.LENGTH_SHORT).show();
-                if(!drawerLayout.isDrawerOpen(GravityCompat.START))
+                if (!drawerLayout.isDrawerOpen(GravityCompat.START))
                     drawerLayout.openDrawer(GravityCompat.START);
                 else
                     drawerLayout.closeDrawer(GravityCompat.END);
+
             }
 
 
-
-
-
         });
+
+
+
 
 
 
@@ -152,25 +161,105 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
-
         //google sign in
 
-        gOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gClient= GoogleSignIn.getClient(this,gOptions);
+        gOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gClient = GoogleSignIn.getClient(this, gOptions);
 
-        GoogleSignInAccount gAccount=GoogleSignIn.getLastSignedInAccount(this);
+        GoogleSignInAccount gAccount = GoogleSignIn.getLastSignedInAccount(this);
 
 
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.app_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_account) {
+            Intent intent=new Intent(MainActivity.this,accountActivity.class);
+            startActivity(intent);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_account:
+                Intent intent=new Intent(MainActivity.this,accountActivity.class);
+                startActivity(intent);
+
+
+
+
+                break;
+            case R.id.nav_settings:
+
+
+
+                break;
+            case  R.id.upload:
+
+                upload(MainActivity.this);
+                break;
+
+            case R.id.nav_logOut:
+
+              logout(MainActivity.this);
+                break;
+        }
+
+
+        DrawerLayout drawer = findViewById(R.id.drawarLayout);
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawarLayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+
+        }
+    }
+    private void logout(MainActivity mainActivity){
+        AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity);
+        builder.setTitle("Logout");
+        builder.setMessage("Are you sure you want to logout ?");
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.show();
+
+    }
+    public void upload(MainActivity mainActivity){
+        Intent intent=new Intent(MainActivity.this,uploadActivity.class);
+        startActivity(intent);
+
+    }
 }

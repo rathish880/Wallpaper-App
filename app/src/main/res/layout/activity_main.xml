@@ -6,24 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="HardcodedText">
+    tools:ignore="HardcodedText"
+    tools:openDrawer="start">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/navigation_bar"
-        app:headerLayout="@layout/nav_header"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
 
             <com.google.android.material.appbar.MaterialToolbar
 
@@ -39,13 +30,13 @@
                 app:title="@string/walkzz"
                 tools:layout_editor_absoluteX="1dp"
                 tools:layout_editor_absoluteY="30dp" />
-        </com.google.android.material.appbar.AppBarLayout>
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appbar">
+            android:layout_below="@+id/toolbar">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
@@ -73,5 +64,13 @@
         </androidx.viewpager2.widget.ViewPager2>
 
     </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_bar"
+        app:headerLayout="@layout/nav_header"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
