@@ -25,6 +25,8 @@ import com.example.walkzz.fragment.exploreFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,7 +43,8 @@ public class uploadActivity extends AppCompatActivity {
     private Button mButtonChooseImage;
     private Button mButtonUpload;
     private TextView mTextViewShowUploads;
-    private EditText mEditTextFileName;
+    private TextInputEditText mEditTextFileName;
+    private TextInputEditText mEditTextCategoryName;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
 
@@ -63,6 +66,7 @@ public class uploadActivity extends AppCompatActivity {
         mEditTextFileName = findViewById(R.id.edit_text_file_name);
         mImageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
+        mEditTextCategoryName=findViewById(R.id.edit_text_Category_name);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
@@ -146,7 +150,7 @@ public class uploadActivity extends AppCompatActivity {
                             Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!urlTask.isSuccessful()) ;
                             Uri downloadUrl = urlTask.getResult();
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString());
+                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),mEditTextCategoryName.getText().toString().trim(), downloadUrl.toString());
 
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
